@@ -1,0 +1,21 @@
+{
+  "name": "akuma/behat-base",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Nikita Makarov",
+      "email": "mesaverde228@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Akuma\\": "src/"
+    }
+  },
+  "require": {
+    "behat/behat": "^3.5",
+    "behat/mink-extension": "^2.3.0",
+    "behat/mink-selenium2-driver": "^1.3",
+    "behat/symfony2-extension": "^2.1"
+  }
+}

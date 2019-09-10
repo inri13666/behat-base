@@ -1,0 +1,44 @@
+default: &default
+    suites:
+        core_features:
+            paths:
+                - '%paths.base%/src/Features'
+            contexts:
+                # Default Behat Context
+                - Akuma\Context\FeatureContext
+                # Additional Behat Mink Context
+                - Behat\MinkExtension\Context\MinkContext
+    extensions:
+        Behat\MinkExtension:
+            base_url: 'http://localhost.com/'
+            default_session: 'first_session'
+            sessions:
+                first_session:
+                    selenium2:
+                        wd_host: 'http://localhost:4444/wd/hub'
+                        capabilities:
+                            extra_capabilities:
+                                chromeOptions:
+                                    args:
+                                        - "--no-proxy-server"
+                                        - "--no-sandbox"
+                                        - "--dns-prefetch-disable"
+                                        - "--no-first-run"
+                                        - "--disable-gpu"
+                                        - "--window-size=1920,1080"
+                                        - "--no-pings"
+                                        - "--disable-renderer-backgrounding"
+                                        - '--lang=en-US'
+headless:
+    <<: *default
+    extensions:
+        Behat\MinkExtension:
+            browser_name: chrome
+            sessions:
+                first_session:
+                    selenium2:
+                        capabilities:
+                            extra_capabilities:
+                                chromeOptions:
+                                    args:
+                                        - "--headless"
